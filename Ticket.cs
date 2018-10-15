@@ -15,12 +15,14 @@ namespace Exam2
     {
         #region --- Private Data Fields ---
         int ticketNumber;
+        //int index;
         DateTime timeIn;
         DateTime timeOut;
         #endregion -- Private data --
 
         #region --- Public Properties ---
         public int TicketNumber { get => ticketNumber; set => ticketNumber = value; }
+        //public int Index { get => index; set => index = value; }
         public DateTime TimeIn { get => timeIn; set => timeIn = value; }
         public DateTime TimeOut { get => timeOut; set => timeOut = value; }
         #endregion -- Public Props --
@@ -29,29 +31,59 @@ namespace Exam2
         public Ticket(int tktNo, DateTime tmIn, DateTime tmOut)
         {
             this.ticketNumber = tktNo;
+            //this.index = idx;
             this.timeIn = tmIn;
             this.timeOut = tmOut;
         } // end of constructor
         #endregion -- Constructs --
 
+        #region --- Methods ---
+
+        public static bool LtFll(int inside)
+        {
+            if (inside > 0)
+            {
+                return false;
+            } // end of if                
+
+            return true;
+        } // end of isLotFull
+
+        public static TimeSpan tmeInLot(DateTime timeIn, DateTime timeOut)
+        {
+            TimeSpan totaltime = timeOut.Subtract(timeIn);   // time need to come in in hrs
+            return totaltime;                   // time returned should be hrs
+        } // end of timeInLot
+
+        /// <summary>
+        /// figures how much is due per ticket
+        /// </summary>
+        /// <param name="hrs"></param>
+        /// <returns></returns>
+        public static double AmountDue(TimeSpan hrs)
+        {
+            double amount;
+            int hours = hrs.Hours;
+            if (hours <= 3)         // if less than3 hours, $2
+            {
+                amount = 2.00;
+                return amount;
+            } // end of if < 3
+            else if (hours > 3 && hours < 20 )          // if between 3 and 20 hours, fee is calc'd
+            {
+                amount = (((hours - 3) * .5) + 2.00);
+                return amount;
+            } // end of else if 
+                // lastly otherwise charge $10
+            else
+            {
+                amount = 10;
+                return amount;
+            }
+        } // end of AmountDue
+
+        #endregion -- methods --
+
     } // end of class
-
-
-    #region --- Methods ---
-    
-    //public static bool isLotFull(int lwstTktNo, int hghstTkNo)
-    //{
-    //    if (hghstTkNo - lwstTktNo < 25)
-    //        return true;
-
-    //    return false;
-    //} // end of isLotFull
-
-    //public static int tmeInLot(int timeIn, int timeOut)
-    //{
-    //    int totaltime = timeOut - timeIn;   // time need to come in in hrs
-    //    return totaltime;                   // time returned should be hrs
-    //} // end of timeInLot
-#endregion -- methods --
 
 } // end of namespace
