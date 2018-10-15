@@ -137,7 +137,6 @@ namespace Exam2
                 DateTime current = DateTime.Now;        // sets the timein
                 XElement tckt = xdoc.Element("tickets");
                 tckt.Add(new XElement("ticket",
-                    new XAttribute("index", numberTicket),
                     new XElement("tktNumber", numberTicket),
                     new XElement("timeIn", current.ToString()),
                     new XElement("timeOut", current.ToString())));       // this should have added the new ticket with no out time
@@ -281,8 +280,11 @@ namespace Exam2
 
             XDocument doc = XDocument.Load("tickets.xml");          // loads the xml doc
 
-            doc.XPathSelectElement("//tickets/Ticket[" + number + "]/timeOut").Value = leave;                            // reads the doc and updates necessary fields based on ticket number
+
+                // problemn here it is not recognizing the objects after the original 5
+            doc.XPathSelectElement("//tickets/Ticket[" + number + "]/timeOut").Value = leave;             // reads the doc and updates necessary fields based on ticket number
             string ventry = doc.XPathSelectElement("//tickets/Ticket[" + number + "]/timeIn").Value;
+
             doc.Save("tickets.xml");                        // saves the xml file
 
             DateTime entry = DateTime.Parse(ventry);
