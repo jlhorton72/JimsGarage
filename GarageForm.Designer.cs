@@ -92,7 +92,7 @@
             this.lblTicketDetails.AutoSize = true;
             this.lblTicketDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lblTicketDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTicketDetails.Location = new System.Drawing.Point(188, 225);
+            this.lblTicketDetails.Location = new System.Drawing.Point(359, 262);
             this.lblTicketDetails.Name = "lblTicketDetails";
             this.lblTicketDetails.Size = new System.Drawing.Size(125, 24);
             this.lblTicketDetails.TabIndex = 3;
@@ -103,7 +103,7 @@
             this.lblTmIn.AutoSize = true;
             this.lblTmIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lblTmIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTmIn.Location = new System.Drawing.Point(117, 333);
+            this.lblTmIn.Location = new System.Drawing.Point(117, 375);
             this.lblTmIn.Name = "lblTmIn";
             this.lblTmIn.Size = new System.Drawing.Size(78, 24);
             this.lblTmIn.TabIndex = 4;
@@ -114,7 +114,7 @@
             this.lblTcktNo.AutoSize = true;
             this.lblTcktNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lblTcktNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTcktNo.Location = new System.Drawing.Point(51, 283);
+            this.lblTcktNo.Location = new System.Drawing.Point(51, 319);
             this.lblTcktNo.Name = "lblTcktNo";
             this.lblTcktNo.Size = new System.Drawing.Size(144, 24);
             this.lblTcktNo.TabIndex = 5;
@@ -180,18 +180,18 @@
             // 
             this.txtBxTicketNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtBxTicketNumber.ForeColor = System.Drawing.Color.Blue;
-            this.txtBxTicketNumber.Location = new System.Drawing.Point(243, 284);
+            this.txtBxTicketNumber.Location = new System.Drawing.Point(243, 319);
             this.txtBxTicketNumber.Name = "txtBxTicketNumber";
-            this.txtBxTicketNumber.Size = new System.Drawing.Size(120, 26);
+            this.txtBxTicketNumber.Size = new System.Drawing.Size(147, 26);
             this.txtBxTicketNumber.TabIndex = 11;
             // 
             // txtBxTimeIn
             // 
             this.txtBxTimeIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtBxTimeIn.ForeColor = System.Drawing.Color.Blue;
-            this.txtBxTimeIn.Location = new System.Drawing.Point(243, 333);
+            this.txtBxTimeIn.Location = new System.Drawing.Point(243, 375);
             this.txtBxTimeIn.Name = "txtBxTimeIn";
-            this.txtBxTimeIn.Size = new System.Drawing.Size(120, 26);
+            this.txtBxTimeIn.Size = new System.Drawing.Size(147, 26);
             this.txtBxTimeIn.TabIndex = 12;
             // 
             // txtBxTimeOut
@@ -200,7 +200,7 @@
             this.txtBxTimeOut.ForeColor = System.Drawing.Color.Blue;
             this.txtBxTimeOut.Location = new System.Drawing.Point(671, 375);
             this.txtBxTimeOut.Name = "txtBxTimeOut";
-            this.txtBxTimeOut.Size = new System.Drawing.Size(120, 26);
+            this.txtBxTimeOut.Size = new System.Drawing.Size(143, 26);
             this.txtBxTimeOut.TabIndex = 13;
             // 
             // txtBxtktNumOut
@@ -209,7 +209,7 @@
             this.txtBxtktNumOut.ForeColor = System.Drawing.Color.Blue;
             this.txtBxtktNumOut.Location = new System.Drawing.Point(671, 321);
             this.txtBxtktNumOut.Name = "txtBxtktNumOut";
-            this.txtBxtktNumOut.Size = new System.Drawing.Size(120, 26);
+            this.txtBxtktNumOut.Size = new System.Drawing.Size(143, 26);
             this.txtBxtktNumOut.TabIndex = 14;
             // 
             // txtBxTotalTime
@@ -218,7 +218,7 @@
             this.txtBxTotalTime.ForeColor = System.Drawing.Color.Blue;
             this.txtBxTotalTime.Location = new System.Drawing.Point(671, 431);
             this.txtBxTotalTime.Name = "txtBxTotalTime";
-            this.txtBxTotalTime.Size = new System.Drawing.Size(120, 26);
+            this.txtBxTotalTime.Size = new System.Drawing.Size(143, 26);
             this.txtBxTotalTime.TabIndex = 15;
             // 
             // txtBxTotalDue
@@ -227,7 +227,7 @@
             this.txtBxTotalDue.ForeColor = System.Drawing.Color.Blue;
             this.txtBxTotalDue.Location = new System.Drawing.Point(671, 486);
             this.txtBxTotalDue.Name = "txtBxTotalDue";
-            this.txtBxTotalDue.Size = new System.Drawing.Size(120, 26);
+            this.txtBxTotalDue.Size = new System.Drawing.Size(143, 26);
             this.txtBxTotalDue.TabIndex = 16;
             // 
             // btnPiad

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Xml;
 using System.Xml.XPath;
 using System.Xml.Linq;
@@ -58,6 +52,8 @@ namespace Exam2
             lblWhatTicket.Visible = false;
             txtBxInput.Visible = false;
             txtBxInput.Enabled = false;
+            btnAccept.Visible = false;              
+            btnAccept.Enabled = false;
             #endregion -- hide stuffs --
 
             // create the xml file here with no info
@@ -118,6 +114,8 @@ namespace Exam2
             btnPiad.Visible = false;
             btnPiad.Enabled = false;
             txtBxViewAll.Visible = false;
+            btnAccept.Visible = false;           // these two
+            btnAccept.Enabled = false;
             #endregion -- hides stuffs --
 
             #region --- reveals ---
@@ -126,44 +124,16 @@ namespace Exam2
             lblTmIn.Visible = true;
             txtBxTimeIn.Visible = true;
             txtBxTicketNumber.Visible = true;
+            lblTcktNo.Visible = true;
             #endregion -- reveals --
             full--;                                 // decrements the lot full counter
             numberTicket++;                         // increases the ticketnumber
 
             bool lotFull;
             XDocument xdoc = XDocument.Load("tickets.xml");
-            //high = doc.SelectNodes("//tickets/ticket/tktNumber").Cast<XmlElement>()
-            //    .Max(c => Int32.Parse(c.Attributes["tktNumber"].Value));
-            //low = doc.SelectNodes("//tickets/ticket/tktNumber").Cast<XmlElement>()
-            //    .Min(c => Int32.Parse(c.Attributes["tktNumber"].Value));
             lotFull = Ticket.LtFll(full);          // calls the lotfull to see if its full
-
             if (lotFull == false)                   // lot has room
             {
-
-                #region did not work
-                //Ticket[] tickets2 = new Ticket[1];
-                //tickets2[0] = new Ticket(numberTicket, numberTicket, DateTime.Now, DateTime.Now);
-
-                //using (XmlWriter writer = XmlWriter.Create("tickets.xml"))
-                //{
-                //    writer.WriteStartDocument();
-                //    writer.WriteStartElement("tickets");
-                //    foreach (Ticket tk in tickets2)
-                //    {
-                //        writer.WriteStartElement("Ticket");
-                //        writer.WriteAttributeString("index", tk.Index.ToString());
-                //        writer.WriteElementString("tktNumber", tk.TicketNumber.ToString());
-                //        writer.WriteElementString("timeIn", tk.TimeIn.ToString());
-                //        writer.WriteElementString("timeOut", tk.TimeOut.ToString());
-                //        writer.WriteEndElement();
-                //    } // end of foreach loop that builds xml file
-                //    writer.WriteEndElement();
-                //    writer.WriteEndDocument();
-                //    writer.Close();
-                //} // end of using
-                #endregion did not work
-
                 DateTime current = DateTime.Now;        // sets the timein
                 XElement tckt = xdoc.Element("tickets");
                 tckt.Add(new XElement("ticket",
@@ -194,13 +164,21 @@ namespace Exam2
         /// <param name="e"></param>
         private void btnLeave_Click(object sender, EventArgs e)
         {
-           // btnPiad.Visible = true;
-            //btnPiad.Enabled = true;
+            btnPiad.Visible = true;
+            btnPiad.Enabled = true;
+            btnAccept.Visible = true;
+            btnAccept.Enabled = true;
             //lblTmOut.Visible = true;
             lblWhatTicket.Visible = true;
             txtBxInput.Visible = true;
             txtBxInput.Clear();
             txtBxInput.Enabled = true;
+            lblTcktNo.Visible = false;
+            txtBxTicketNumber.Clear();
+            txtBxTicketNumber.Visible = false;
+            lblTmIn.Visible = false;
+            txtBxTimeIn.Clear();
+            txtBxTimeIn.Visible = false;
         } // end of ExitGarage
 
         /// <summary>
@@ -240,6 +218,11 @@ namespace Exam2
             lblTmOut.Visible = false;
             lblTtlTime.Visible = false;
             lblAmntDue.Visible = false;
+            lblTcktNo.Visible = false;  // just added these three 
+            lblTmIn.Visible = false;
+            txtBxTimeIn.Visible = false;
+            txtBxTicketNumber.Visible = false;
+            btnAccept.Visible = false;
             #endregion -- hide --
 
             // return to basic form & denumerat the ticketcount
@@ -278,44 +261,33 @@ namespace Exam2
             #endregion -- hide --
 
             #region --- reveals ---
+            lblTmIn.Visible = true;  // just added
             lblTicketOut.Visible = true;
             lblTmOut.Visible = true;
             lblTtlTime.Visible = true;
             lblAmntDue.Visible = true;
             btnPiad.Visible = true;
             btnPiad.Enabled = true;
+            lblTcktNo.Visible = true;
             #endregion -- reveals --
-
-            //string number = txtBxInput.Text;
-            int number = Convert.ToInt32(txtBxInput.Text);            // sets the value for tkt number to search
-            //DateTime leave = DateTime.Now;
+           
+            int number = Convert.ToInt32(txtBxInput.Text);            // sets the value for tkt number to search         
             string leave = DateTime.Now.ToString();     // sets the datetime of leaving
             // make stuff visible
             txtBxtktNumOut.Visible = true;
             txtBxTimeOut.Visible = true;
             txtBxTotalTime.Visible = true;
-            txtBxTotalDue.Visible = true;                       //  /tktNumber[text()='  for 2 lines down
-            //var doc = XElement.Load("tickets.xml");
-            //var saveLeave = doc.Element("tickets")
-            //    .Element("ticket")
-            //    .where(e => e.Elements("index").Value == number)
-            //    .Single();
-
+            txtBxTotalDue.Visible = true;                   
 
             XDocument doc = XDocument.Load("tickets.xml");          // loads the xml doc
-
 
             doc.XPathSelectElement("//tickets/Ticket[" + number + "]/timeOut").Value = leave;                            // reads the doc and updates necessary fields based on ticket number
             string ventry = doc.XPathSelectElement("//tickets/Ticket[" + number + "]/timeIn").Value;
             doc.Save("tickets.xml");                        // saves the xml file
 
             DateTime entry = DateTime.Parse(ventry);
-            //DateTime entry = DateTime.Parse(doc.XPathSelectElement("//tktNumber[" + number + "]/timeIn").Value);
             string vexit = doc.XPathSelectElement("//tickets/Ticket[" + number + "]/timeOut").Value;
             DateTime exit = DateTime.Parse(vexit);
-
-            //DateTime exit = DateTime.Parse(doc.XPathSelectElement("//tktNumber[" + number + "]/timeOut").Value);
-
             TimeSpan timeInLot = Ticket.tmeInLot(entry, exit);      // calls the tmeinlot method for calculating time in lot
             // calculate the money due
             double due;                                     // establishes the variable
