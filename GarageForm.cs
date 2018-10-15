@@ -22,7 +22,7 @@ namespace Exam2
     public partial class ParkingGarage : Form
     {
         int numberTicket = 5;
-        int full = 20;
+        int full = 21;
         XmlDocument doc = new XmlDocument();
         public ParkingGarage()
         {
@@ -305,13 +305,13 @@ namespace Exam2
             XDocument doc = XDocument.Load("tickets.xml");          // loads the xml doc
 
 
-            doc.XPathSelectElement("//tickets/ticket[" + number + "]/timeOut").Value = leave;                            // reads the doc and updates necessary fields based on ticket number
-            string ventry = doc.XPathSelectElement("//tickets/ticket[" + number + "]/timeIn").Value;
+            doc.XPathSelectElement("//tickets/Ticket[" + number + "]/timeOut").Value = leave;                            // reads the doc and updates necessary fields based on ticket number
+            string ventry = doc.XPathSelectElement("//tickets/Ticket[" + number + "]/timeIn").Value;
             doc.Save("tickets.xml");                        // saves the xml file
 
             DateTime entry = DateTime.Parse(ventry);
             //DateTime entry = DateTime.Parse(doc.XPathSelectElement("//tktNumber[" + number + "]/timeIn").Value);
-            string vexit = doc.XPathSelectElement("//tickets/ticket[" + number + "]/timeOut").Value;
+            string vexit = doc.XPathSelectElement("//tickets/Ticket[" + number + "]/timeOut").Value;
             DateTime exit = DateTime.Parse(vexit);
 
             //DateTime exit = DateTime.Parse(doc.XPathSelectElement("//tktNumber[" + number + "]/timeOut").Value);
@@ -324,8 +324,8 @@ namespace Exam2
             txtBxTimeIn.Visible = true;
             lblTmIn.Visible = true;
             txtBxTicketNumber.Visible = true;
-            txtBxTicketNumber.Text = doc.XPathSelectElement("//tickets/ticket[" + number + "]/tktNumber").Value;
-            txtBxTimeIn.Text = doc.XPathSelectElement("//tickets/ticket[" + number + "]/timeIn").Value;
+            txtBxTicketNumber.Text = doc.XPathSelectElement("//tickets/Ticket[" + number + "]/tktNumber").Value;
+            txtBxTimeIn.Text = doc.XPathSelectElement("//tickets/Ticket[" + number + "]/timeIn").Value;
             txtBxtktNumOut.Text = number.ToString(); //doc.XPathSelectElement("//tktNumber[text()='" + number + "']").Value;
             txtBxTimeOut.Text = exit.ToString();    //doc.XPathSelectElement("//tktNumber[text()='" + number + "']/timeOut").Value;
             txtBxTotalDue.Text = due.ToString("C0");                // stes the total due 
