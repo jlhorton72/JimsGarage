@@ -28,6 +28,12 @@ namespace Exam2
         #endregion -- Public Props --
 
         #region --- Constructors ---
+        /// <summary>
+        ///builds each ticket 
+        /// </summary>
+        /// <param name="tktNo"></param>
+        /// <param name="tmIn"></param>
+        /// <param name="tmOut"></param>
         public Ticket(int tktNo, DateTime tmIn, DateTime tmOut)
         {
             this.ticketNumber = tktNo;
@@ -39,6 +45,11 @@ namespace Exam2
 
         #region --- Methods ---
 
+        /// <summary>
+        ///  returns bool as to whether or not lot is full
+        /// </summary>
+        /// <param name="inside"></param>
+        /// <returns></returns>
         public static bool LtFll(int inside)
         {
             if (inside > 0)
@@ -49,6 +60,12 @@ namespace Exam2
             return true;
         } // end of isLotFull
 
+        /// <summary>
+        /// determines time in lot
+        /// </summary>
+        /// <param name="timeIn"></param>
+        /// <param name="timeOut"></param>
+        /// <returns></returns>
         public static TimeSpan tmeInLot(DateTime timeIn, DateTime timeOut)
         {
             TimeSpan totaltime = timeOut.Subtract(timeIn);   // time need to come in in hrs

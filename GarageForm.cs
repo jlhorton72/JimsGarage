@@ -18,6 +18,7 @@ namespace Exam2
         int numberTicket = 5;
         int full = 21;
         XmlDocument doc = new XmlDocument();
+
         public ParkingGarage()
         {
             InitializeComponent();
@@ -136,7 +137,7 @@ namespace Exam2
             {
                 DateTime current = DateTime.Now;        // sets the timein
                 XElement tckt = xdoc.Element("tickets");
-                tckt.Add(new XElement("ticket",
+                tckt.Add(new XElement("Ticket",
                     new XElement("tktNumber", numberTicket),
                     new XElement("timeIn", current.ToString()),
                     new XElement("timeOut", current.ToString())));       // this should have added the new ticket with no out time
